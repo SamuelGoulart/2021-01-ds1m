@@ -13,13 +13,9 @@ public class Conta {
 	//*** Métodos de acesso aos atributos da classe
 	// *** getters and setters
 	
-	
-	//Parâmetros são valores que passamos para um método, estes valores são recebidos pelas variáveis criadas dentro 
-	//do parênteses do método.
 	public void setTipo(String tipo) {
-		
-		 //código do método entre chaves
-		
+	//parâmetro
+       
 	     //O método equals é utilizado para comparações.
 		if(tipo.equals("Corrente") || tipo.equals("Poupança") ) {
 			//o this serve para diferenciar quando o método tem o mesmo nome de parametro que a class
