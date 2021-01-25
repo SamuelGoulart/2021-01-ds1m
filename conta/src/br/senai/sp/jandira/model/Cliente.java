@@ -1,0 +1,52 @@
+package br.senai.sp.jandira.model;
+
+public class Cliente {
+    
+	//São variáveis String, porque tem parenteses e hifen
+	//Exemplo (11) 9999-9999
+	//Também não iremos fazer nenhuma operação matemática
+	//Quando não especificamos se é public ou private, por padrão será private.
+	private String nome;
+    private	String cpf;
+	private String telefone;
+	private String cep;
+	
+	// Nome
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getNome() {
+		return this.nome;
+	}
+	
+	//cpf
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	public String getCpf() {
+		return this.cpf;
+	}
+	
+	//telefone
+	
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	
+	public String getTelefone() {
+		return this.telefone;
+	}
+	
+	//cep
+	
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	
+	public String getCep() {
+		return this.cep;
+	}
+	
+}
