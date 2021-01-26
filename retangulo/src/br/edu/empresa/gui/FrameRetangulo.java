@@ -3,7 +3,6 @@ package br.edu.empresa.gui;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -42,7 +41,8 @@ public class FrameRetangulo {
 		labelBase.setBounds(10, 45, 80, 30);
 		
 		JTextField textBase = new JTextField();
-		textBase.setBounds(10 ,50, 100, 15);
+		textBase.setBounds(50, 55, 100, 15);
+		
 	
 		
 		// *** Criar o botão para calcular
@@ -60,6 +60,7 @@ public class FrameRetangulo {
 		telaRetangulo.getContentPane().add(labelAltura);
 		telaRetangulo.getContentPane().add(textAltura);
 		telaRetangulo.getContentPane().add(labelBase);
+		telaRetangulo.getContentPane().add(textBase);
 		telaRetangulo.getContentPane().add(buttonCalcular);
 		
 		
