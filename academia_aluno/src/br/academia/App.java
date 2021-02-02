@@ -18,10 +18,21 @@ public class App {
 	   samuel.setNome("Samuel");
 	   samuel.setPeso(60.0);
 	   samuel.setAltura(1.70);
-	   samuel.getDataNascimentoLocalDate.of(2002, 02, 20));
+	   samuel.setSexo("M");
+	   LocalDate data = LocalDate.of(2020, 2, 20);
+	   samuel.setDataNascimento(data);
+	   samuel.setAtividadeFisica("Atividade intensa");
 	  
-	   System.out.println("***" + samuel.getNome()+ "***");
-	   System.out.println("****"+ samuel.getImc());
-	   System.out.println("****"+ samuel.resultadoImc());
+	   System.out.println("Nome: " + samuel.getNome());   
+	 
+	   System.out.println("Altura: " +samuel.getAltura());
+	   System.out.println("IMC: "+ samuel.getImc());
+	   System.out.println("Resultado do IMC: "+ samuel.resultadoImc());
+	   System.out.println("-----------------------------");
+	   // Calular NDC
+	   System.out.println("Idade: "+samuel.getIdade());
+	   System.out.println("Peso: " + samuel.getPeso());
+	   System.out.println("Calculo do GCD (Cálculo do gasto calórico diário) " +samuel.calcularGCD());
+	   System.out.println("Calculo do NDC:"+ samuel.calcularNDC());
 	}
 }

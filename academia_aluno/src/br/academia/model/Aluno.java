@@ -10,6 +10,7 @@ public class Aluno {
 	private double altura;
 	private String genero;
 	private LocalDate dataNascimento;
+	private String atividadeFisica;
 	
    
 	// set vou mandar um valor
@@ -53,12 +54,21 @@ public class Aluno {
 		return this.dataNascimento;
 	}
 	
+	public void setAtividadeFisica(String atividadeFisica) {
+		this.atividadeFisica = atividadeFisica;
+	}
+	
+	
 	// Obter a idade da pessoa
 	
 	public int getIdade() {
+		//LocalDate hoje = LocalDate.now();
+	   // Period periodo = Period.between(hoje, this.dataNascimento);
+	   // return int periodo.getYears();
 		LocalDate hoje = LocalDate.now();
-	    Period periodo = Period.between(this.dataNascimento, hoje);
-	    return periodo.getYears();
+		LocalDate dataNascimento = LocalDate.of(1952, 2,20);
+		Period periodo = Period.between(dataNascimento, hoje);
+		return periodo.getYears();
 	}
 	
 	
@@ -93,23 +103,65 @@ public class Aluno {
     	return "";
     }
     
-   public double calcularNdc() {
+   public double calcularGCD() {
     	
     	if(genero == "M") {
-    		
-    		if(dataNascimento => 18 && dataNascimento <= 30) {
-    			
-    		  return 15.3 * peso + 679;
+    		if(this.getIdade() >= 18 && this.getIdade() <= 30) {
+    	        return  (15.3 * this.peso) + 679; 	 
+    		}
+    		else if(this.getIdade() >= 31 && this.getIdade() <=60) { 
+    			return 11.6 * this.peso + 879;
+    		}
+    		else {
+    			return 13.5 * this.peso + 487;
     		}
     	}
      	else {
+    		if(this.getIdade() >= 18 && this.getIdade() <= 30) {
+    	        return  14.7 * this.peso + 496; 	 
+    		}
+    		else if(this.getIdade() >= 31 && this.getIdade() <=60) {
+    			return 8.7 * this.peso + 829;
+    		}
+    		else {
+    			return 10.5 * this.peso + 596;
+    		}
     		
     	}
+   }
+    	public double calcularNDC() {
+    		if(genero == "M") {
+    	      if(this.atividadeFisica == "Atividade leve") {
+    			return this.calcularGCD()*1.5;
+    	       }
+    		else if (this.atividadeFisica == "Atividade moderada") {
+    			return this.calcularGCD()*1.8;
+    		}
+    		else if (this.atividadeFisica == "Atividade intensa") {
+    			return this.calcularGCD()*2.1;
+    		}
+    		else {
+    			return this.calcularGCD();
+    		}
+    	}
+    	else {
+      	      if(this.atividadeFisica == "Atividade leve") {
+      			return this.calcularGCD()*1.6;
+      	       }
+      		else if (this.atividadeFisica == "Atividade moderada") {
+      			return this.calcularGCD()*1.6;
+      		}
+      		else if (this.atividadeFisica == "Atividade intensa") {
+    			return this.calcularGCD()*1.8;
+    		}
+    		else {
+    			return this.calcularGCD();
+    		}
+      	      
+    	}
     	
-  
     }
     
-     
+  
     
-
 }
