@@ -3,25 +3,28 @@ package br.academia;
 import java.time.LocalDate;
 
 import br.academia.model.Aluno;
+import br.academia.model.AtividadeFisica;
 
-//import br.academia.gui.FrameAcademia;
+import br.academia.gui.FrameAcademia;
 
 public class App {
 	
    public static void main(String[] args) {
 	   
-	//FrameAcademia tela = new FrameAcademia();
-	//tela.criarTela();
+	FrameAcademia tela = new FrameAcademia();
+	tela.criarTela();
 	   
 	   Aluno  samuel = new Aluno();
-	    
+	   AtividadeFisica atividadefisica = new AtividadeFisica();
+	   
+
 	   samuel.setNome("Samuel");
 	   samuel.setPeso(60.0);
 	   samuel.setAltura(1.70);
-	   samuel.setSexo("M");
+	   atividadefisica.setSexo("M");
 	   LocalDate data = LocalDate.of(2020, 2, 20);
-	   samuel.setDataNascimento(data);
-	   samuel.setAtividadeFisica("Atividade intensa");
+	   atividadefisica.setDataNascimento(data);
+	   atividadefisica.setAtividadeFisica("Atividade intensa");
 	  
 	   System.out.println("Nome: " + samuel.getNome());   
 	 
@@ -30,9 +33,9 @@ public class App {
 	   System.out.println("Resultado do IMC: "+ samuel.resultadoImc());
 	   System.out.println("-----------------------------");
 	   // Calular NDC
-	   System.out.println("Idade: "+samuel.getIdade());
+	   System.out.println("Idade: "+atividadefisica.getIdade());
 	   System.out.println("Peso: " + samuel.getPeso());
-	   System.out.println("Calculo do GCD (Cálculo do gasto calórico diário) " +samuel.calcularGCD());
-	   System.out.println("Calculo do NDC:"+ samuel.calcularNDC());
+	   System.out.println("Calculo do GCD (Cálculo do gasto calórico diário) " +atividadefisica.calcularGCD());
+	   System.out.println("Calculo do NDC:"+ atividadefisica.calcularNDC());
 	}
 }

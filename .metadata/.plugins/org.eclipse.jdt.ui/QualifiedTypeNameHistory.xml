@@ -6,8 +6,6 @@
     <fullyQualifiedTypeName name="java.awt.Frame"/>
     <fullyQualifiedTypeName name="javax.swing.JButton"/>
     <fullyQualifiedTypeName name="java.awt.Color"/>
-    <fullyQualifiedTypeName name="javax.swing.JTextField"/>
-    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
     <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
@@ -19,4 +17,13 @@
     <fullyQualifiedTypeName name="java.time.Period"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="br.academia.model.Aluno"/>
+    <fullyQualifiedTypeName name="br.academia.model.AtividadeFisica"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="javax.swing.JTextField"/>
+    <fullyQualifiedTypeName name="javax.swing.JRadioButton"/>
+    <fullyQualifiedTypeName name="javax.swing.plaf.basic.BasicBorders.RadioButtonBorder"/>
+    <fullyQualifiedTypeName name="br.academia.App"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
 </qualifiedTypeNameHistroy>
