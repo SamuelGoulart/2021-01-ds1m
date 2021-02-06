@@ -1,20 +1,17 @@
 package br.academia.model;
 
 public class Aluno {
-      
+
 	private String nome;
 	private double peso;
 	private double altura;
 	
 	
-	
-	// set vou mandar um valor
-	// get vou pegar um valor
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	
-	public String getNome() {	
+	public String getNome() {
 		return this.nome;
 	}
 	
@@ -22,7 +19,7 @@ public class Aluno {
 		this.peso = peso;
 	}
 	
-	public Double getPeso() {
+	public double getPeso() {
 		return this.peso;
 	}
 	
@@ -30,19 +27,19 @@ public class Aluno {
 		this.altura = altura;
 	}
 	
-	public Double getAltura() {
+	public double getAltura() {
 		return this.altura;
 	}
-		
 	
-    public double getImc() {
-    	
+	//métodos
+	
+	 public double getImc() {
     	 return  this.peso /  Math.pow(this.altura, 2);
     }
-    
-    public String resultadoImc() {
-    	
-    	if(this.getImc() < 18.5) {
+	 
+	public String reultadoIMC() {
+		
+	 	if(this.getImc() < 18.5) {
     		return "abaixo do peso";
     	}
     	else if (this.getImc() >= 18.5 && this.getImc() <= 24.9) {
@@ -62,6 +59,5 @@ public class Aluno {
     	}
     	
     	return "";
-    }
-       
+	}
 }

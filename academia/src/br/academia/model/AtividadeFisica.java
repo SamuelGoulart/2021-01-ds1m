@@ -5,19 +5,12 @@ import java.time.Period;
 
 public class AtividadeFisica {
 
-	private String genero;
+    private String genero;
 	private String atividadeFisica;
-	private LocalDate dataNascimento;
+	private double peso;
+	private int dataNascimento;
 	
-	Aluno samuel = new Aluno();
-	double peso = samuel.getPeso();
-	
-  //  private double peso =  60;
-
-
-	
-	
-	public void setSexo(String genero) {
+	public void setGenero(String genero) {
 		this.genero = genero;
 	}
 	public String getGenero() {
@@ -28,11 +21,23 @@ public class AtividadeFisica {
 		this.atividadeFisica = atividadeFisica;
 	}
 	
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public String getAtividadeFisica() {
+		return this.atividadeFisica;
 	}
 	
-	public LocalDate getDataNascimento() {
+	public void setPesoAtividadeFisica(Double peso) {
+		this.peso = peso;
+	}
+	
+	public double getPesoAtividadeFisica() {
+		return this.peso;
+	}
+    
+	
+	public void setDataNascimento(int dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	public int getDataNascimento() {
 		return this.dataNascimento;
 	}
 
@@ -41,7 +46,7 @@ public class AtividadeFisica {
 	   // Period periodo = Period.between(hoje, this.dataNascimento);
 	   // return int periodo.getYears();
 		LocalDate hoje = LocalDate.now();
-		LocalDate dataNascimento = LocalDate.of(1952, 2,20);
+		LocalDate dataNascimento = LocalDate.of(2002, 2,20);
 		Period periodo = Period.between(dataNascimento, hoje);
 		return periodo.getYears();
 	}
@@ -49,7 +54,7 @@ public class AtividadeFisica {
 	
 	 public double calcularGCD() {
 	    	
-	    	if(genero == "M") {
+	    	if(this.genero == "Masculino") {
 	    		if(this.getIdade() >= 18 && this.getIdade() <= 30) {
 	    	        return  15.3 * this.peso + 679; 	 
 	    		}
@@ -75,7 +80,7 @@ public class AtividadeFisica {
 	 }
 	
 	public double calcularNDC() {
-		if(genero == "M") {
+		if(genero == "Masculino") {
 	      if(this.atividadeFisica == "Leve") {
 			return this.calcularGCD()*1.5;
 	       }
@@ -90,13 +95,13 @@ public class AtividadeFisica {
 		}
 	}
 	  else {
-  	      if(this.atividadeFisica == "Atividade leve") {
+  	      if(this.atividadeFisica == "Leve") {
   			return this.calcularGCD()*1.6;
   	       }
-  		else if (this.atividadeFisica == "Atividade moderada") {
+  		else if (this.atividadeFisica == "Moderada") {
   			return this.calcularGCD()*1.6;
   		}
-  		else if (this.atividadeFisica == "Atividade intensa") {
+  		else if (this.atividadeFisica == "intensa") {
 			return this.calcularGCD()*1.8;
 		}
 		else {
