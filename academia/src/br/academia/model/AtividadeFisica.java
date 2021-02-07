@@ -1,15 +1,18 @@
 package br.academia.model;
 
-import java.time.LocalDate;
-import java.time.Period;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class AtividadeFisica {
 
     private String genero;
 	private String atividadeFisica;
 	private double peso;
-	private int dataNascimento;
-	
+	private Integer dt_dia;
+	private Integer dt_mes;
+	private Integer dt_ano;
+
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
@@ -33,24 +36,47 @@ public class AtividadeFisica {
 		return this.peso;
 	}
     
-	
-	public void setDataNascimento(int dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setdt_dia(Integer dia) {
+		this.dt_dia = dia;
 	}
-	public int getDataNascimento() {
-		return this.dataNascimento;
+	
+	 
+    public void setdt_mes(Integer mes) {
+		this.dt_mes = mes;
+	}
+    
+   	public void setdt_ano(Integer ano) {
+   		this.dt_ano = ano;
+   	}
+   	
+			
+	public int getIdade() {
+		 // Data de hoje.  
+	    GregorianCalendar hoje = new GregorianCalendar();
+	    Integer dia = hoje.get(Calendar.DAY_OF_MONTH);
+	    Integer mes = hoje.get(Calendar.MONTH) + 1;
+	    Integer ano = hoje.get(Calendar.YEAR);
+
+	    
+		// Data do nascimento.
+	    Integer anoNasc = dt_ano, 
+			mesNasc = dt_mes, diaNasc = dt_dia;
+ 		
+ 		if (mesNasc < mes || (mesNasc == mes && diaNasc <= dia)) {
+ 			
+ 		Integer	idade = ano - anoNasc;
+ 		return (idade);
+ 		
+ 		}
+ 			else {
+ 			Integer	idade = (ano - anoNasc)-1;
+ 		    return (idade);
+
+ 		}
+ 
+ 		
 	}
 
-	public int getIdade() {
-		//LocalDate hoje = LocalDate.now();
-	   // Period periodo = Period.between(hoje, this.dataNascimento);
-	   // return int periodo.getYears();
-		LocalDate hoje = LocalDate.now();
-		LocalDate dataNascimento = LocalDate.of(2002, 2,20);
-		Period periodo = Period.between(dataNascimento, hoje);
-		return periodo.getYears();
-	}
-	
 	
 	 public double calcularGCD() {
 	    	

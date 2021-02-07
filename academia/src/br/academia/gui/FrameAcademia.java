@@ -3,21 +3,20 @@ package br.academia.gui;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.xml.crypto.Data;
 
 import br.academia.model.Aluno;
 import br.academia.model.AtividadeFisica;
+
+
 
 public class FrameAcademia {
 
@@ -85,12 +84,10 @@ public class FrameAcademia {
 		masculino.setBounds(240 , 100, 90, 15);
 
 		
-		
 		ButtonGroup group = new ButtonGroup();
 	    group.add(masculino);
 	    group.add(feminino);
 	    
-         
 	    		
 	    JTextField textgeneroResultado = new JTextField();
 	    textgeneroResultado.setBounds(500, 100, 130, 15);
@@ -100,23 +97,43 @@ public class FrameAcademia {
 		JLabel labelDataDeNascimento = new JLabel();
 		labelDataDeNascimento.setText("Data de Nascimento: ");
 		labelDataDeNascimento.setBounds(25, 130, 200, 20);	
-		 
-		DateFormat format = new SimpleDateFormat(" / / ");
-		JFormattedTextField textDataDeNascimento = new JFormattedTextField(format);
-		textDataDeNascimento.setBounds(150 , 134, 122, 15);
+	
+		JLabel labelDia = new JLabel();
+		labelDia.setText("Dia");
+		labelDia.setBounds(160, 115, 200, 20);	
+		
+		JTextField textDia = new JTextField();
+		textDia.setBounds(160 , 133, 30, 15);
+		
 
+		JLabel labelMes = new JLabel();
+		labelMes.setText("Mês");
+		labelMes.setBounds(195, 115, 200, 20);	
+		
+		JTextField textMes = new JTextField();
+		textMes.setBounds(195 , 133, 30, 15);
+	
+
+		JLabel labelAno = new JLabel();
+		labelAno.setText("Ano");
+		labelAno.setBounds(230, 115, 200, 20);	
+		
+		JTextField textAno = new JTextField();
+		textAno.setBounds(230 , 133, 40, 15);
+		
 		JTextField textDataDeNascimentoResultado = new JTextField();
-		textDataDeNascimentoResultado.setBounds(300 , 134, 122, 15);
+		textDataDeNascimentoResultado.setBounds(300 , 135, 122, 15);
 
+		
 		
 		// **** JLabel e JComboBox da atividade física	
 		JLabel labelGrauDeAtividadeFisica = new JLabel();
 		labelGrauDeAtividadeFisica.setText("Grau de atividade física: ");
 		labelGrauDeAtividadeFisica.setBounds(25, 155, 230, 20);	
 		
-		String graudeatividadefisica[]={"Leve","Moderada","intensa"};        
+		String graudeatividadefisica[]={"Não prática","Leve","Moderada","intensa"};        
 		JComboBox<String> comboBoxAtividadeFisica= new JComboBox<>(graudeatividadefisica);    
-		comboBoxAtividadeFisica.setBounds(180, 157, 90,20); 
+		comboBoxAtividadeFisica.setBounds(180, 157, 100,20); 
 		String valorSelecionado = (String) comboBoxAtividadeFisica.getSelectedItem();
 		
 		JTextField  comboBoxAtividadeFisicaResultado = new JTextField();
@@ -171,6 +188,9 @@ public class FrameAcademia {
 	    telaAluno.getContentPane().add(labelGrauDeAtividadeFisica);
 	    telaAluno.getContentPane().add(labelGenero);
 	    telaAluno.getContentPane().add(labelDataDeNascimento);
+	    telaAluno.getContentPane().add(labelDia);
+	    telaAluno.getContentPane().add(labelMes);
+	    telaAluno.getContentPane().add(labelAno);
 	    telaAluno.getContentPane().add(labelIMC);
 	    telaAluno.getContentPane().add(labelIMCResultado);
 	    telaAluno.getContentPane().add(labelNDC);	    
@@ -189,7 +209,10 @@ public class FrameAcademia {
 	    
 	    telaAluno.getContentPane().add(textgeneroResultado);
 	    
-	    telaAluno.getContentPane().add(textDataDeNascimento);
+	    telaAluno.getContentPane().add(textDia);
+	    telaAluno.getContentPane().add(textMes);
+	    telaAluno.getContentPane().add(textAno);
+
 	    telaAluno.getContentPane().add(textDataDeNascimentoResultado);
 	    
 	    telaAluno.getContentPane().add(textIMC);
@@ -234,12 +257,15 @@ public class FrameAcademia {
 				
 				calculaimc.setAltura(Double.parseDouble(textAltura.getText()));
 				textAlturaResultado.setText(String.valueOf(calculaimc.getAltura()));
-
-				atividadeFisica.setGenero(feminino.getText());
+				
      			atividadeFisica.setGenero(masculino.getText());
+				atividadeFisica.setGenero(feminino.getText());
 				textgeneroResultado.setText(atividadeFisica.getGenero());
 				
-				//atividadeFisica.setDataNascimento(Integer.parseInt(textDataDeNascimento.getText()));
+				atividadeFisica.setdt_dia(Integer.parseInt(textDia.getText()));
+				atividadeFisica.setdt_mes(Integer.parseInt(textMes.getText()));
+				atividadeFisica.setdt_ano(Integer.parseInt(textAno.getText()));
+				textDataDeNascimentoResultado.setText(String.valueOf(atividadeFisica.getIdade()));
 				
 				atividadeFisica.setAtividadeFisica(valorSelecionado);
 			    atividadeFisica.setAtividadeFisica(String.valueOf(comboBoxAtividadeFisica.getSelectedItem()));			  
