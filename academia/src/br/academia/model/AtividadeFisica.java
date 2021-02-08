@@ -49,6 +49,7 @@ public class AtividadeFisica {
    		this.dt_ano = ano;
    	}
    	
+ 
 			
 	public int getIdade() {
 		 // Data de hoje.  

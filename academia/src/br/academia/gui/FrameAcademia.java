@@ -1,9 +1,12 @@
 package br.academia.gui;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -21,13 +24,17 @@ import br.academia.model.AtividadeFisica;
 public class FrameAcademia {
 
 	public void criarTela() {
-		
+	    Font fonteDoTexto = new Font("Roboto", Font.CENTER_BASELINE, 16);
+
 		
 		JFrame telaAluno = new JFrame();
 	    telaAluno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    telaAluno.setSize(1000, 800);
+	    telaAluno.setSize(700, 400);
 	    telaAluno.setTitle("IMC e NDC");
 	    telaAluno.setLayout(null);
+        telaAluno.setFont(fonteDoTexto);
+
+	    
 	    
         //A faz tela sempre vai aparecer no meio		
 		telaAluno.setLocationRelativeTo(null);
@@ -40,13 +47,14 @@ public class FrameAcademia {
 	    // Label e TextField do Nome
 		JLabel labelNome = new JLabel();
 		labelNome.setText("Nome: ");
-		labelNome.setBounds(25, 40, 40, 30);
+		labelNome.setBounds(25, 40, 80, 30);
+        labelNome.setFont(fonteDoTexto);
 		
 		JTextField textNome = new JTextField();
-		textNome.setBounds(70 , 50, 210, 15);
+		textNome.setBounds(80 , 50, 200, 15);
 		
 		JTextField textNomeResultado = new JTextField();
-		textNomeResultado.setBounds(300 , 50, 210, 15);
+		textNomeResultado.setBounds(350 , 50, 210, 15);
 		
 	    // Label e TextField do Peso
 		JLabel labelPeso = new JLabel();
@@ -68,8 +76,7 @@ public class FrameAcademia {
 		textAltura.setBounds(70 , 100, 40, 15);
 
 		JTextField textAlturaResultado = new JTextField();
-		textAlturaResultado.setBounds(400 , 100, 40, 15);
-				
+		textAlturaResultado.setBounds(320 , 100, 40, 15);	
 
 		// **** JRadioButton e JLabel género
 		JLabel labelGenero = new JLabel();
@@ -81,16 +88,17 @@ public class FrameAcademia {
 		feminino.setBounds(120 , 100, 90, 15);
 		
 		JRadioButton masculino = new JRadioButton("Masculino");
-		masculino.setBounds(240 , 100, 90, 15);
-
+		masculino.setBounds(220 , 100, 90, 15);
 		
+
 		ButtonGroup group = new ButtonGroup();
 	    group.add(masculino);
-	    group.add(feminino);
+	    group.add(feminino);	
+     
+
 	    
-	    		
 	    JTextField textgeneroResultado = new JTextField();
-	    textgeneroResultado.setBounds(500, 100, 130, 15);
+	    textgeneroResultado.setBounds(380, 100, 130, 15);
 	    
 	 		
 		// **** JRadioButton e JLabel Data de Nacimento
@@ -236,8 +244,6 @@ public class FrameAcademia {
 
 	    
 	    // ***** Cliques da tela
-	    
-	    
 	    buttonCalcular.addActionListener(new ActionListener() {
 			
 			@Override
@@ -258,9 +264,22 @@ public class FrameAcademia {
 				calculaimc.setAltura(Double.parseDouble(textAltura.getText()));
 				textAlturaResultado.setText(String.valueOf(calculaimc.getAltura()));
 				
-     			atividadeFisica.setGenero(masculino.getText());
+				
+				atividadeFisica.setGenero(masculino.getText());
 				atividadeFisica.setGenero(feminino.getText());
-				textgeneroResultado.setText(atividadeFisica.getGenero());
+
+				
+				if ( feminino.isSelected() ) { 
+					String generoSelecionado = "Feminino"; 
+					atividadeFisica.setGenero(generoSelecionado);
+					}
+				else if ( masculino.isSelected() ) { 
+					String generoSelecionado = "Masculino"; 
+					atividadeFisica.setGenero(generoSelecionado);
+					}
+				
+			
+			    textgeneroResultado.setText(String.valueOf(atividadeFisica.getGenero()));
 				
 				atividadeFisica.setdt_dia(Integer.parseInt(textDia.getText()));
 				atividadeFisica.setdt_mes(Integer.parseInt(textMes.getText()));
