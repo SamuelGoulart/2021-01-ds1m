@@ -29,7 +29,7 @@ public class FrameAcademia {
 		
 		JFrame telaAluno = new JFrame();
 	    telaAluno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    telaAluno.setSize(700, 400);
+	    telaAluno.setSize(400, 400);
 	    telaAluno.setTitle("IMC e NDC");
 	    telaAluno.setLayout(null);
         telaAluno.setFont(fonteDoTexto);
@@ -52,9 +52,7 @@ public class FrameAcademia {
 		
 		JTextField textNome = new JTextField();
 		textNome.setBounds(80 , 50, 200, 15);
-		
-		JTextField textNomeResultado = new JTextField();
-		textNomeResultado.setBounds(350 , 50, 210, 15);
+	
 		
 	    // Label e TextField do Peso
 		JLabel labelPeso = new JLabel();
@@ -63,9 +61,7 @@ public class FrameAcademia {
 		
 		JTextField textPeso = new JTextField();
 		textPeso.setBounds(70 , 75, 40, 15);
-		
-		JTextField textPesoResultado = new JTextField();
-		textPesoResultado.setBounds(300 , 75, 40, 15);
+	
 		
 	    // Label e TextField do altura
 		JLabel labelAltura = new JLabel();
@@ -75,8 +71,6 @@ public class FrameAcademia {
 		JTextField textAltura = new JTextField();
 		textAltura.setBounds(70 , 100, 40, 15);
 
-		JTextField textAlturaResultado = new JTextField();
-		textAlturaResultado.setBounds(320 , 100, 40, 15);	
 
 		// **** JRadioButton e JLabel género
 		JLabel labelGenero = new JLabel();
@@ -94,11 +88,6 @@ public class FrameAcademia {
 		ButtonGroup group = new ButtonGroup();
 	    group.add(masculino);
 	    group.add(feminino);	
-     
-
-	    
-	    JTextField textgeneroResultado = new JTextField();
-	    textgeneroResultado.setBounds(380, 100, 130, 15);
 	    
 	 		
 		// **** JRadioButton e JLabel Data de Nacimento
@@ -129,8 +118,6 @@ public class FrameAcademia {
 		JTextField textAno = new JTextField();
 		textAno.setBounds(230 , 133, 40, 15);
 		
-		JTextField textDataDeNascimentoResultado = new JTextField();
-		textDataDeNascimentoResultado.setBounds(300 , 135, 122, 15);
 
 		
 		
@@ -144,16 +131,13 @@ public class FrameAcademia {
 		comboBoxAtividadeFisica.setBounds(180, 157, 100,20); 
 		String valorSelecionado = (String) comboBoxAtividadeFisica.getSelectedItem();
 		
-		JTextField  comboBoxAtividadeFisicaResultado = new JTextField();
-		comboBoxAtividadeFisicaResultado.setBounds(300, 157, 122, 15);
-		
 		// **** JLabel e JComboBox do valor IMC e Resultado IMC
 		JLabel labelIMC= new JLabel();
 		labelIMC.setText("O valor do IMC: ");
 		labelIMC.setBounds(25, 185, 120, 20);			
 		
 		JTextField textIMC = new JTextField();
-		textIMC.setBounds(150 , 185, 172, 15);
+		textIMC.setBounds(150 , 185, 160, 15);
 		
 		JLabel labelIMCResultado = new JLabel();
 		labelIMCResultado.setText("O resultado do  IMC: ");
@@ -169,7 +153,7 @@ public class FrameAcademia {
 		labelNDC.setBounds(25, 236, 150, 20);		
 	    
 		JTextField textNDC = new JTextField();
-		textNDC.setBounds(150 , 240, 122, 15);
+		textNDC.setBounds(150 , 240, 160, 15);
 				
 		// *** Criar o botão para calcular
 		JButton buttonCalcular = new JButton();
@@ -207,22 +191,11 @@ public class FrameAcademia {
 
 	    
 	    telaAluno.getContentPane().add(textNome);
-	    telaAluno.getContentPane().add(textNomeResultado);
-	    
 	    telaAluno.getContentPane().add(textPeso);
-	    telaAluno.getContentPane().add(textPesoResultado);
-	    
 	    telaAluno.getContentPane().add(textAltura);
-	    telaAluno.getContentPane().add(textAlturaResultado);
-	    
-	    telaAluno.getContentPane().add(textgeneroResultado);
-	    
 	    telaAluno.getContentPane().add(textDia);
 	    telaAluno.getContentPane().add(textMes);
 	    telaAluno.getContentPane().add(textAno);
-
-	    telaAluno.getContentPane().add(textDataDeNascimentoResultado);
-	    
 	    telaAluno.getContentPane().add(textIMC);
 	    
 	    telaAluno.getContentPane().add(textIMCResultado);
@@ -233,7 +206,6 @@ public class FrameAcademia {
 	    telaAluno.getContentPane().add(masculino);
 	    telaAluno.getContentPane().add(feminino);
 	    telaAluno.getContentPane().add(comboBoxAtividadeFisica); 
-	    telaAluno.getContentPane().add(comboBoxAtividadeFisicaResultado);
 	    telaAluno.getContentPane().add(buttonLimpar);
 	    
 	     
@@ -241,6 +213,23 @@ public class FrameAcademia {
 	    
 	    
 	    telaAluno.setVisible(true);
+	    buttonLimpar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				textNome.setText(null);
+				textPeso.setText(null);
+				textAltura.setText(null);
+				textDia.setText(null);
+				textMes.setText(null);
+				textAno.setText(null);
+				textIMC.setText(null);
+				textNDC.setText(null);
+				textIMCResultado.setText(null);
+				textIMC.setText(null);
+			}
+		});
 
 	    
 	    // ***** Cliques da tela
@@ -255,15 +244,11 @@ public class FrameAcademia {
 
 
 				calculaimc.setNome(textNome.getText());
-				textNomeResultado.setText(calculaimc.getNome());
-		
+	
 				calculaimc.setPeso(Double.parseDouble(textPeso.getText()));
-				textPesoResultado.setText(String.valueOf(calculaimc.getPeso()));
 				atividadeFisica.setPesoAtividadeFisica(Double.parseDouble(textPeso.getText()));
 				
 				calculaimc.setAltura(Double.parseDouble(textAltura.getText()));
-				textAlturaResultado.setText(String.valueOf(calculaimc.getAltura()));
-				
 				
 				atividadeFisica.setGenero(masculino.getText());
 				atividadeFisica.setGenero(feminino.getText());
@@ -277,20 +262,15 @@ public class FrameAcademia {
 					String generoSelecionado = "Masculino"; 
 					atividadeFisica.setGenero(generoSelecionado);
 					}
-				
 			
-			    textgeneroResultado.setText(String.valueOf(atividadeFisica.getGenero()));
 				
 				atividadeFisica.setdt_dia(Integer.parseInt(textDia.getText()));
 				atividadeFisica.setdt_mes(Integer.parseInt(textMes.getText()));
 				atividadeFisica.setdt_ano(Integer.parseInt(textAno.getText()));
-				textDataDeNascimentoResultado.setText(String.valueOf(atividadeFisica.getIdade()));
 				
 				atividadeFisica.setAtividadeFisica(valorSelecionado);
 			    atividadeFisica.setAtividadeFisica(String.valueOf(comboBoxAtividadeFisica.getSelectedItem()));			  
-			    comboBoxAtividadeFisicaResultado.setText(atividadeFisica.getAtividadeFisica());
-			    
-    
+	
 				textIMC.setText( String.valueOf(calculaimc.getImc()));
 			    textIMCResultado.setText( String.valueOf(calculaimc.reultadoIMC()));
 			    textNDC.setText(String.valueOf(atividadeFisica.calcularNDC()));
