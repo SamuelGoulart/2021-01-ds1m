@@ -1,10 +1,12 @@
 package br.academia.model;
 
 
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class AtividadeFisica {
+
+public class AtividadeFisica  {
 
     private String genero;
 	private String atividadeFisica;
@@ -48,9 +50,9 @@ public class AtividadeFisica {
    	public void setdt_ano(Integer ano) {
    		this.dt_ano = ano;
    	}
-   	
- 
+  
 			
+   	
 	public int getIdade() {
 		 // Data de hoje.  
 	    GregorianCalendar hoje = new GregorianCalendar();

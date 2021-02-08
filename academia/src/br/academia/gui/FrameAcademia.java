@@ -2,11 +2,10 @@ package br.academia.gui;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.TextField;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -24,12 +23,11 @@ import br.academia.model.AtividadeFisica;
 public class FrameAcademia {
 
 	public void criarTela() {
-	    Font fonteDoTexto = new Font("Roboto", Font.CENTER_BASELINE, 16);
+	    Font fonteDoTexto = new Font("Arial", Font.ITALIC, 16);
 
-		
 		JFrame telaAluno = new JFrame();
 	    telaAluno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    telaAluno.setSize(400, 400);
+	    telaAluno.setSize(480, 600);
 	    telaAluno.setTitle("IMC e NDC");
 	    telaAluno.setLayout(null);
         telaAluno.setFont(fonteDoTexto);
@@ -43,6 +41,8 @@ public class FrameAcademia {
 		label.setText("Informe os dados abaixo para calcular o IMC é o NDC");
 		// *** Definir a posição e tamanho do label (x, y, w, h)
 		label.setBounds(15, 10, 500, 30);	
+        label.setFont(fonteDoTexto);
+
 		
 	    // Label e TextField do Nome
 		JLabel labelNome = new JLabel();
@@ -57,33 +57,38 @@ public class FrameAcademia {
 	    // Label e TextField do Peso
 		JLabel labelPeso = new JLabel();
 		labelPeso.setText("Peso: ");
-		labelPeso.setBounds(25, 75, 60, 10);
-		
+		labelPeso.setBounds(25, 75, 60, 15);
+        labelPeso.setFont(fonteDoTexto);
+
 		JTextField textPeso = new JTextField();
-		textPeso.setBounds(70 , 75, 40, 15);
+		textPeso.setBounds(80 , 75, 40, 15);
 	
-		
+  
 	    // Label e TextField do altura
 		JLabel labelAltura = new JLabel();
 		labelAltura.setText("Altura: ");
-		labelAltura.setBounds(25, 100, 60, 10);	
+		labelAltura.setBounds(25, 100, 60, 15);	
+		labelAltura.setFont(fonteDoTexto);
 		
 		JTextField textAltura = new JTextField();
-		textAltura.setBounds(70 , 100, 40, 15);
+		textAltura.setBounds(80 , 100, 40, 15);
 
 
 		// **** JRadioButton e JLabel género
 		JLabel labelGenero = new JLabel();
 		labelGenero.setText("Género: ");
-		labelGenero.setBounds(125, 70, 120, 20);	
+		labelGenero.setBounds(145, 70, 120, 20);	
+        labelGenero.setFont(fonteDoTexto);
 		
 		
 		JRadioButton feminino = new JRadioButton("Feminino");
-		feminino.setBounds(120 , 100, 90, 15);
-		
+		feminino.setBounds(140 , 100, 100, 15);
+        feminino.setFont(fonteDoTexto);
+
 		JRadioButton masculino = new JRadioButton("Masculino");
-		masculino.setBounds(220 , 100, 90, 15);
-		
+		masculino.setBounds(245 , 100, 120, 15);
+        masculino.setFont(fonteDoTexto);
+
 
 		ButtonGroup group = new ButtonGroup();
 	    group.add(masculino);
@@ -93,30 +98,36 @@ public class FrameAcademia {
 		// **** JRadioButton e JLabel Data de Nacimento
 		JLabel labelDataDeNascimento = new JLabel();
 		labelDataDeNascimento.setText("Data de Nascimento: ");
-		labelDataDeNascimento.setBounds(25, 130, 200, 20);	
+		labelDataDeNascimento.setBounds(25, 140, 200, 20);	
+        labelDataDeNascimento.setFont(fonteDoTexto);
+
 	
 		JLabel labelDia = new JLabel();
 		labelDia.setText("Dia");
-		labelDia.setBounds(160, 115, 200, 20);	
+		labelDia.setBounds(200, 125, 200, 20);	
+        labelDia.setFont(fonteDoTexto);
+
 		
 		JTextField textDia = new JTextField();
-		textDia.setBounds(160 , 133, 30, 15);
-		
+		textDia.setBounds(200, 143, 30, 15);
 
 		JLabel labelMes = new JLabel();
 		labelMes.setText("Mês");
-		labelMes.setBounds(195, 115, 200, 20);	
-		
+		labelMes.setBounds(260, 125, 200, 20);	
+        labelMes.setFont(fonteDoTexto);
+
 		JTextField textMes = new JTextField();
-		textMes.setBounds(195 , 133, 30, 15);
+		textMes.setBounds(260 , 143, 30, 15);
 	
 
 		JLabel labelAno = new JLabel();
 		labelAno.setText("Ano");
-		labelAno.setBounds(230, 115, 200, 20);	
+		labelAno.setBounds(310, 125, 200, 20);	
+        labelAno.setFont(fonteDoTexto);
+
 		
 		JTextField textAno = new JTextField();
-		textAno.setBounds(230 , 133, 40, 15);
+		textAno.setBounds(310 , 143, 40, 15);
 		
 
 		
@@ -124,52 +135,85 @@ public class FrameAcademia {
 		// **** JLabel e JComboBox da atividade física	
 		JLabel labelGrauDeAtividadeFisica = new JLabel();
 		labelGrauDeAtividadeFisica.setText("Grau de atividade física: ");
-		labelGrauDeAtividadeFisica.setBounds(25, 155, 230, 20);	
-		
-		String graudeatividadefisica[]={"Não prática","Leve","Moderada","intensa"};        
+		labelGrauDeAtividadeFisica.setBounds(25, 180, 230, 20);	
+        labelGrauDeAtividadeFisica.setFont(fonteDoTexto);
+
+		String graudeatividadefisica[]={"Nenhuma atividade","Leve","Moderada","intensa"};        
 		JComboBox<String> comboBoxAtividadeFisica= new JComboBox<>(graudeatividadefisica);    
-		comboBoxAtividadeFisica.setBounds(180, 157, 100,20); 
+		comboBoxAtividadeFisica.setBounds(220, 180, 150,20); 
 		String valorSelecionado = (String) comboBoxAtividadeFisica.getSelectedItem();
+		
+		// Label Resultado
+		JLabel labelCampoResultado= new JLabel();
+		labelCampoResultado.setText("Resultados: ");
+		labelCampoResultado.setBounds(155, 215, 120, 20);			
+        labelCampoResultado.setFont(fonteDoTexto);
+        
+        JLabel labelNomeResultado = new JLabel();
+        labelNomeResultado.setText("Nome: ");
+        labelNomeResultado.setBounds(25, 245, 120, 20);			
+        labelNomeResultado.setFont(fonteDoTexto);
+
+		JTextField textNomeResultado = new JTextField();
+		textNomeResultado.setBounds(150 , 245, 160, 15);
+		
+        
+        JLabel labelIdadeResultado= new JLabel();
+        labelIdadeResultado.setText("Idade: ");
+        labelIdadeResultado.setBounds(25, 270, 120, 20);			
+        labelIdadeResultado.setFont(fonteDoTexto);
+        
+		JTextField textIdadeResultado = new JTextField();
+		textIdadeResultado.setBounds(150 , 270, 40, 15);
+		
+
 		
 		// **** JLabel e JComboBox do valor IMC e Resultado IMC
 		JLabel labelIMC= new JLabel();
 		labelIMC.setText("O valor do IMC: ");
-		labelIMC.setBounds(25, 185, 120, 20);			
-		
+		labelIMC.setBounds(25, 300, 120, 20);			
+        labelIMC.setFont(fonteDoTexto);
+
 		JTextField textIMC = new JTextField();
-		textIMC.setBounds(150 , 185, 160, 15);
+		textIMC.setBounds(150 , 300, 160, 15);
+		
 		
 		JLabel labelIMCResultado = new JLabel();
-		labelIMCResultado.setText("O resultado do  IMC: ");
-		labelIMCResultado.setBounds(25, 210, 150, 20);		
-	    
+		labelIMCResultado.setText("Status do IMC: ");
+		labelIMCResultado.setBounds(25, 330, 150, 20);		
+        labelIMCResultado.setFont(fonteDoTexto);
+
+        
 		JTextField textIMCResultado = new JTextField();
-		textIMCResultado.setBounds(150 , 205, 160, 30);
+		textIMCResultado.setBounds(150 , 325, 160, 30);
 
 		
 		// **** JLabel e JComboBox do NDC
 		JLabel labelNDC = new JLabel();
-		labelNDC.setText("O resultado do  NDC: ");
-		labelNDC.setBounds(25, 236, 150, 20);		
+		labelNDC.setText(" NDC: ");
+		labelNDC.setBounds(25, 360, 150, 20);		
+        labelNDC.setFont(fonteDoTexto);
+
 	    
 		JTextField textNDC = new JTextField();
-		textNDC.setBounds(150 , 240, 160, 15);
+		textNDC.setBounds(150 , 360, 160, 15);
 				
 		// *** Criar o botão para calcular
 		JButton buttonCalcular = new JButton();
 		buttonCalcular.setText("Calcular");
 		Color branco = new Color(255,255,255);
 		buttonCalcular.setForeground(branco);
-		Color azul = new Color(0,0,255);
-		buttonCalcular.setBackground(azul);
-		buttonCalcular.setBounds(25, 270,120, 30);		
+		Color verde = new Color(34,139,34);
+		buttonCalcular.setBackground(verde);
+		buttonCalcular.setBounds(25, 390,120, 30);		
 		
 		// *** Contruir o botão Limpar
 		JButton buttonLimpar = new JButton();
 		buttonLimpar.setText("Limpar");
 		buttonLimpar.setForeground(branco);
-		buttonLimpar.setBackground(azul);
-		buttonLimpar.setBounds(155, 270, 120, 30);		
+		Color vermelho = new Color(255,0,0);
+		buttonLimpar.setBackground(vermelho);
+		buttonLimpar.setBounds(155, 390, 120, 30);		
 		
 		// *** Colocar o label, botão  dentro 
 		//do painel de conteúdo contentPane -> content Pane
@@ -183,6 +227,9 @@ public class FrameAcademia {
 	    telaAluno.getContentPane().add(labelDia);
 	    telaAluno.getContentPane().add(labelMes);
 	    telaAluno.getContentPane().add(labelAno);
+	    telaAluno.getContentPane().add(labelCampoResultado);
+	    telaAluno.getContentPane().add(labelIdadeResultado);
+	    telaAluno.getContentPane().add(labelNomeResultado);
 	    telaAluno.getContentPane().add(labelIMC);
 	    telaAluno.getContentPane().add(labelIMCResultado);
 	    telaAluno.getContentPane().add(labelNDC);	    
@@ -196,6 +243,8 @@ public class FrameAcademia {
 	    telaAluno.getContentPane().add(textDia);
 	    telaAluno.getContentPane().add(textMes);
 	    telaAluno.getContentPane().add(textAno);
+	    telaAluno.getContentPane().add(textNomeResultado);
+	    telaAluno.getContentPane().add(textIdadeResultado);
 	    telaAluno.getContentPane().add(textIMC);
 	    
 	    telaAluno.getContentPane().add(textIMCResultado);
@@ -262,7 +311,6 @@ public class FrameAcademia {
 					String generoSelecionado = "Masculino"; 
 					atividadeFisica.setGenero(generoSelecionado);
 					}
-			
 				
 				atividadeFisica.setdt_dia(Integer.parseInt(textDia.getText()));
 				atividadeFisica.setdt_mes(Integer.parseInt(textMes.getText()));
@@ -271,6 +319,9 @@ public class FrameAcademia {
 				atividadeFisica.setAtividadeFisica(valorSelecionado);
 			    atividadeFisica.setAtividadeFisica(String.valueOf(comboBoxAtividadeFisica.getSelectedItem()));			  
 	
+				textNomeResultado.setText(calculaimc.getNome());
+                textIdadeResultado.setText(String.valueOf(atividadeFisica.getIdade ()));
+			    
 				textIMC.setText( String.valueOf(calculaimc.getImc()));
 			    textIMCResultado.setText( String.valueOf(calculaimc.reultadoIMC()));
 			    textNDC.setText(String.valueOf(atividadeFisica.calcularNDC()));
