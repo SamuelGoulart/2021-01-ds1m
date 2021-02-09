@@ -8,7 +8,8 @@ public class App {
 		// TODO Auto-generated method stub
 		
 	    FrameAcademia tela = new FrameAcademia();
-	    tela.criarTela();  
+	    tela.criarTela(); 
+	    
 	}
 
 }

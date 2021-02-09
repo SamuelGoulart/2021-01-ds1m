@@ -5,15 +5,18 @@ import java.awt.Font;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.text.ParseException;
+import java.time.LocalDate;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 import br.academia.model.Aluno;
 import br.academia.model.AtividadeFisica;
@@ -24,7 +27,22 @@ public class FrameAcademia {
 
 	public void criarTela() {
 	    Font fonteDoTexto = new Font("Arial", Font.ITALIC, 16);
-
+	    
+	    MaskFormatter peso = null ;
+		try {
+			peso = new MaskFormatter("##.#");
+		} catch(ParseException e ) {
+			e.printStackTrace();
+		}
+		
+		  
+	    MaskFormatter altura = null ;
+		try {
+			altura = new MaskFormatter("#.##");
+		} catch(ParseException e ) {
+			e.printStackTrace();
+		}
+		
 		JFrame telaAluno = new JFrame();
 	    telaAluno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    telaAluno.setSize(480, 600);
@@ -53,16 +71,16 @@ public class FrameAcademia {
 		JTextField textNome = new JTextField();
 		textNome.setBounds(80 , 50, 200, 15);
 	
-		
+
 	    // Label e TextField do Peso
 		JLabel labelPeso = new JLabel();
 		labelPeso.setText("Peso: ");
 		labelPeso.setBounds(25, 75, 60, 15);
         labelPeso.setFont(fonteDoTexto);
 
-		JTextField textPeso = new JTextField();
-		textPeso.setBounds(80 , 75, 40, 15);
 	
+		JFormattedTextField textPeso = new JFormattedTextField(peso);
+		textPeso.setBounds(80 , 75, 40, 15);
   
 	    // Label e TextField do altura
 		JLabel labelAltura = new JLabel();
@@ -70,9 +88,8 @@ public class FrameAcademia {
 		labelAltura.setBounds(25, 100, 60, 15);	
 		labelAltura.setFont(fonteDoTexto);
 		
-		JTextField textAltura = new JTextField();
+		JFormattedTextField textAltura = new JFormattedTextField(altura);
 		textAltura.setBounds(80 , 100, 40, 15);
-
 
 		// **** JRadioButton e JLabel género
 		JLabel labelGenero = new JLabel();
@@ -165,7 +182,7 @@ public class FrameAcademia {
         
 		JTextField textIdadeResultado = new JTextField();
 		textIdadeResultado.setBounds(150 , 270, 40, 15);
-		
+	
 
 		
 		// **** JLabel e JComboBox do valor IMC e Resultado IMC
@@ -302,19 +319,12 @@ public class FrameAcademia {
 				atividadeFisica.setGenero(masculino.getText());
 				atividadeFisica.setGenero(feminino.getText());
 
+				atividadeFisica.setGenero(masculino.isSelected()?"Masculino":"Feminino");	
 				
-				if ( feminino.isSelected() ) { 
-					String generoSelecionado = "Feminino"; 
-					atividadeFisica.setGenero(generoSelecionado);
-					}
-				else if ( masculino.isSelected() ) { 
-					String generoSelecionado = "Masculino"; 
-					atividadeFisica.setGenero(generoSelecionado);
-					}
-				
-				atividadeFisica.setdt_dia(Integer.parseInt(textDia.getText()));
-				atividadeFisica.setdt_mes(Integer.parseInt(textMes.getText()));
-				atividadeFisica.setdt_ano(Integer.parseInt(textAno.getText()));
+				atividadeFisica.setDataNascimento(LocalDate.of(2002, 2, 20));
+//				atividadeFisica.setdt_dia(Integer.parseInt(textDia.getText()));
+//				atividadeFisica.setdt_mes(Integer.parseInt(textMes.getText()));
+//				atividadeFisica.setdt_ano(Integer.parseInt(textAno.getText()));
 				
 				atividadeFisica.setAtividadeFisica(valorSelecionado);
 			    atividadeFisica.setAtividadeFisica(String.valueOf(comboBoxAtividadeFisica.getSelectedItem()));			  
