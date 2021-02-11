@@ -43,6 +43,14 @@ public class FrameAcademia {
 			e.printStackTrace();
 		}
 		
+		MaskFormatter dataNascimento = null;
+		try {
+			dataNascimento = new MaskFormatter("##/##/####");
+			dataNascimento.setPlaceholderCharacter('_');
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		JFrame telaAluno = new JFrame();
 	    telaAluno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    telaAluno.setSize(480, 600);
@@ -117,38 +125,11 @@ public class FrameAcademia {
 		labelDataDeNascimento.setText("Data de Nascimento: ");
 		labelDataDeNascimento.setBounds(25, 140, 200, 20);	
         labelDataDeNascimento.setFont(fonteDoTexto);
-
 	
-		JLabel labelDia = new JLabel();
-		labelDia.setText("Dia");
-		labelDia.setBounds(200, 125, 200, 20);	
-        labelDia.setFont(fonteDoTexto);
+		JFormattedTextField  textDataNascimento = new JFormattedTextField(dataNascimento);
+        textDataNascimento.setBounds(200, 143, 70, 20);
+        
 
-		
-		JTextField textDia = new JTextField();
-		textDia.setBounds(200, 143, 30, 15);
-
-		JLabel labelMes = new JLabel();
-		labelMes.setText("Mês");
-		labelMes.setBounds(260, 125, 200, 20);	
-        labelMes.setFont(fonteDoTexto);
-
-		JTextField textMes = new JTextField();
-		textMes.setBounds(260 , 143, 30, 15);
-	
-
-		JLabel labelAno = new JLabel();
-		labelAno.setText("Ano");
-		labelAno.setBounds(310, 125, 200, 20);	
-        labelAno.setFont(fonteDoTexto);
-
-		
-		JTextField textAno = new JTextField();
-		textAno.setBounds(310 , 143, 40, 15);
-		
-
-		
-		
 		// **** JLabel e JComboBox da atividade física	
 		JLabel labelGrauDeAtividadeFisica = new JLabel();
 		labelGrauDeAtividadeFisica.setText("Grau de atividade física: ");
@@ -241,9 +222,6 @@ public class FrameAcademia {
 	    telaAluno.getContentPane().add(labelGrauDeAtividadeFisica);
 	    telaAluno.getContentPane().add(labelGenero);
 	    telaAluno.getContentPane().add(labelDataDeNascimento);
-	    telaAluno.getContentPane().add(labelDia);
-	    telaAluno.getContentPane().add(labelMes);
-	    telaAluno.getContentPane().add(labelAno);
 	    telaAluno.getContentPane().add(labelCampoResultado);
 	    telaAluno.getContentPane().add(labelIdadeResultado);
 	    telaAluno.getContentPane().add(labelNomeResultado);
@@ -257,9 +235,7 @@ public class FrameAcademia {
 	    telaAluno.getContentPane().add(textNome);
 	    telaAluno.getContentPane().add(textPeso);
 	    telaAluno.getContentPane().add(textAltura);
-	    telaAluno.getContentPane().add(textDia);
-	    telaAluno.getContentPane().add(textMes);
-	    telaAluno.getContentPane().add(textAno);
+	    telaAluno.getContentPane().add(textDataNascimento);
 	    telaAluno.getContentPane().add(textNomeResultado);
 	    telaAluno.getContentPane().add(textIdadeResultado);
 	    telaAluno.getContentPane().add(textIMC);
@@ -287,9 +263,7 @@ public class FrameAcademia {
 				textNome.setText(null);
 				textPeso.setText(null);
 				textAltura.setText(null);
-				textDia.setText(null);
-				textMes.setText(null);
-				textAno.setText(null);
+				textDataNascimento.setText(null);
 				textIMC.setText(null);
 				textNDC.setText(null);
 				textIMCResultado.setText(null);
@@ -320,17 +294,14 @@ public class FrameAcademia {
 				atividadeFisica.setGenero(feminino.getText());
 
 				atividadeFisica.setGenero(masculino.isSelected()?"Masculino":"Feminino");	
-				
-				atividadeFisica.setDataNascimento(LocalDate.of(2002, 2, 20));
-//				atividadeFisica.setdt_dia(Integer.parseInt(textDia.getText()));
-//				atividadeFisica.setdt_mes(Integer.parseInt(textMes.getText()));
-//				atividadeFisica.setdt_ano(Integer.parseInt(textAno.getText()));
-				
+
+				atividadeFisica.setDataNascimento(textDataNascimento.getText());
+                textIdadeResultado.setText(String.valueOf(atividadeFisica.getIdade ()));
+
 				atividadeFisica.setAtividadeFisica(valorSelecionado);
 			    atividadeFisica.setAtividadeFisica(String.valueOf(comboBoxAtividadeFisica.getSelectedItem()));			  
 	
 				textNomeResultado.setText(calculaimc.getNome());
-                textIdadeResultado.setText(String.valueOf(atividadeFisica.getIdade ()));
 			    
 				textIMC.setText( String.valueOf(calculaimc.getImc()));
 			    textIMCResultado.setText( String.valueOf(calculaimc.reultadoIMC()));
